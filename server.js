@@ -30,11 +30,11 @@ app.get('/', (req, res) => {
 
 // Require Routers
 const productRouter = require('./Routers/Product_Routs')
-const orderRouter = require('./Routers/Order_Routs')
+// const orderRouter = require('./Routers/Order_Routs')
 
 // use Routers
 app.use('/product', productRouter)
-app.use('/order', orderRouter)
+// app.use('/order', orderRouter)
 
 // Listener
 app.listen(port, () => {

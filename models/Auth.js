@@ -10,4 +10,4 @@ const AuthSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('Auth', userSchema)
+module.exports = mongoose.model('Auth', AuthSchema)
