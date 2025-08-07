@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const AuthSchema = require('./Auth')
-const productSchema = require('./product')
-const reviewSchema = require('./review')
-const orderSchema = require('./order')
+const productSchema = require('./Product')
+const reviewSchema = require('./Review')
+const orderSchema = require('./Order')
 
 const Auth = mongoose.model('Auth', AuthSchema)
 const Product = mongoose.model('Product', productSchema)
