@@ -7,7 +7,7 @@ const AddingOrder = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const GettingAllOrder = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ const GettingAllOrder = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const GettingOneOrder = async (req, res) => {
   try {
@@ -25,7 +25,7 @@ const GettingOneOrder = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const UpdateOrder = async (req, res) => {
   try {
@@ -36,7 +36,7 @@ const UpdateOrder = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const DeletingOrder = async (req, res) => {
   try {
@@ -45,7 +45,7 @@ const DeletingOrder = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 module.exports = {
   AddingOrder,
