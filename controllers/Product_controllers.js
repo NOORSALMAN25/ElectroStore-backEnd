@@ -7,7 +7,7 @@ const AddingProduct = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const GettingAllProducts = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ const GettingAllProducts = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const GettingOneProduct = async (req, res) => {
   try {
@@ -25,7 +25,7 @@ const GettingOneProduct = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const UpdateProduct = async (req, res) => {
   try {
@@ -38,7 +38,7 @@ const UpdateProduct = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 const DeletingProduct = async (req, res) => {
   try {
@@ -47,7 +47,7 @@ const DeletingProduct = async (req, res) => {
   } catch (error) {
     throw error
   }
-}
+} // tested
 
 module.exports = {
   GettingAllProducts,
