@@ -1,2 +1,56 @@
-//sad
 const Order = require('../models/Order')
+
+const AddingOrder = async (req, res) => {
+  try {
+    const order = await Order.create(req.body)
+    res.status(200).send(order)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GettingAllOrder = async (req, res) => {
+  try {
+    const allOrder = await Order.find()
+    res.status(200).send(allOrder)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GettingOneOrder = async (req, res) => {
+  try {
+    const oneOrder = await Order.findById(req.params.id)
+    res.status(200).send(oneOrder)
+  } catch (error) {
+    throw error
+  }
+}
+
+const UpdateOrder = async (req, res) => {
+  try {
+    const updateOrder = await Order.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    })
+    res.status(200).send(updateOrder)
+  } catch (error) {
+    throw error
+  }
+}
+
+const DeletingOrder = async (req, res) => {
+  try {
+    const deleteOrder = await Order.findByIdAndDelete(req.params.id)
+    res.send(200)
+  } catch (error) {
+    throw error
+  }
+}
+
+module.exports = {
+  AddingOrder,
+  GettingAllOrder,
+  GettingOneOrder,
+  UpdateOrder,
+  DeletingOrder
+}
