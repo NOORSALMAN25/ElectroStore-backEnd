@@ -11,6 +11,8 @@ const AddingProduct = async (req, res) => {
 
 const GettingAllProducts = async (req, res) => {
   try {
+    const allProducts = await Product.find()
+    res.status(200).send(allProducts)
   } catch (error) {
     throw error
   }
