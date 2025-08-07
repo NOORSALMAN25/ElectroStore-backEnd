@@ -23,15 +23,15 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Require Routers
+const AuthRouter = require('./Routers/AuthRouter')
+// use Routers
+app.use('/auth', AuthRouter)
+
 // Root Route
 app.get('/', (req, res) => {
   res.send('Your app is connected . . . ')
 })
-
-// Require Routers
-
-// use Routers
-
 // Listener
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)
