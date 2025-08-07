@@ -20,6 +20,8 @@ const GettingAllProducts = async (req, res) => {
 
 const GettingOneProduct = async (req, res) => {
   try {
+    const oneProduct = await Product.findById(req.params.bookId)
+    res.status(200).send(oneProduct)
   } catch (error) {
     throw error
   }
