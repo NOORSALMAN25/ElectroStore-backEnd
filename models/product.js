@@ -19,7 +19,8 @@ const productSchema = new mongoose.Schema(
       ],
       default: 'accessories'
     },
-    image: { type: String }
+    image: { type: String },
+    availability: { type: Boolean, default: true }
   },
   { timestamps: true }
 )
