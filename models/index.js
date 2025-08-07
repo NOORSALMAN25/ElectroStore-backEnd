@@ -1,17 +1,17 @@
 const mongoose = require('mongoose')
 
-const userSchema = require('./user')
+const AuthSchema = require('./Auth')
 const productSchema = require('./product')
-const reviewSchema = require('./Review')
-const orderSchema = require('./Order')
+const reviewSchema = require('./review')
+const orderSchema = require('./order')
 
-const User = mongoose.model('User', userSchema)
+const Auth = mongoose.model('Auth', AuthSchema)
 const Product = mongoose.model('Product', productSchema)
 const Review = mongoose.model('Review', reviewSchema)
 const Order = mongoose.model('Order', orderSchema)
 
 module.exports = {
-  User,
+  Auth,
   Product,
   Review,
   Order
