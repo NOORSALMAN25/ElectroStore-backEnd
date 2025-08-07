@@ -10,7 +10,7 @@ const app = express()
 const mongoose = require('./config/db')
 
 // set Port Configuration
-const port = process.env.BACKEND_PORT ? process.env.BACKEND_PORT : 3001
+const port = process.env.PORT ? process.env.PORT : 3001
 
 // Require MiddleWares
 const morgan = require('morgan')
