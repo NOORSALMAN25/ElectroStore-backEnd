@@ -5,6 +5,6 @@ router.post('', broductCtrl.AddingProduct)
 router.get('', broductCtrl.GettingAllProducts)
 router.get('/:id', broductCtrl.GettingOneProduct)
 router.put('/:id', broductCtrl.UpdategProduct)
-router.delete('/:id', broductCtrl.DeletingProduct)
+router.delete('/:id', broductCtrl.DeletinProduct)
 
 module.exports = router

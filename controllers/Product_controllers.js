@@ -27,8 +27,9 @@ const GettingOneProduct = async (req, res) => {
   }
 }
 
-const UpdategProduct = async (req, res) => {
+const UpdateProduct = async (req, res) => {
   try {
+    const update
   } catch (error) {
     throw error
   }
@@ -45,6 +46,6 @@ module.exports = {
   GettingAllProducts,
   GettingOneProduct,
   AddingProduct,
-  UpdategProduct,
+  UpdateProduct,
   DeletingProduct
 }
