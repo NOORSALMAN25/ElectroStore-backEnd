@@ -32,6 +32,18 @@ app.use('/auth', AuthRouter)
 app.get('/', (req, res) => {
   res.send('Your app is connected . . . ')
 })
+<<<<<<< HEAD
+=======
+
+// Require Routers
+const productRouter = require('./Routers/Product_Routs')
+const orderRouter = require('./Routers/Order_Routs')
+
+// use Routers
+app.use('/product', productRouter)
+app.use('/order', orderRouter)
+
+>>>>>>> main
 // Listener
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)

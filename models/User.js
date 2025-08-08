@@ -10,5 +10,9 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
+<<<<<<< HEAD:models/User.js
 const User = mongoose.model('User', userSchema)
 module.exports = User
+=======
+module.exports = mongoose.model('Auth', AuthSchema)
+>>>>>>> main:models/Auth.js

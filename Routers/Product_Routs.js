@@ -1,1 +1,10 @@
-Product_Routs
+const router = require('express').Router()
+const broductCtrl = require('../controllers/Product_controllers')
+
+router.post('', broductCtrl.AddingProduct)
+router.get('', broductCtrl.GettingAllProducts)
+router.get('/:id', broductCtrl.GettingOneProduct)
+router.put('/:id', broductCtrl.UpdateProduct)
+router.delete('/:id', broductCtrl.DeletingProduct)
+
+module.exports = router
