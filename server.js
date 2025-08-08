@@ -10,7 +10,7 @@ const app = express()
 const mongoose = require('./config/db')
 
 // set Port Configuration
-const port = process.env.BACKEND_PORT ? process.env.BACKEND_PORT : 3001
+const port = process.env.PORT ? process.env.PORT : 3001
 
 // Require MiddleWares
 const morgan = require('morgan')
@@ -23,10 +23,17 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Require Routers
+const AuthRouter = require('./Routers/AuthRouter')
+// use Routers
+app.use('/auth', AuthRouter)
+
 // Root Route
 app.get('/', (req, res) => {
   res.send('Your app is connected . . . ')
 })
+<<<<<<< HEAD
+=======
 
 // Require Routers
 const productRouter = require('./Routers/Product_Routs')
@@ -36,6 +43,7 @@ const orderRouter = require('./Routers/Order_Routs')
 app.use('/product', productRouter)
 app.use('/order', orderRouter)
 
+>>>>>>> main
 // Listener
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)
