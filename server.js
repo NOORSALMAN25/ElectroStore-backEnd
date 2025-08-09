@@ -10,7 +10,7 @@ const app = express()
 const mongoose = require('./config/db')
 
 // set Port Configuration
-const port = process.env.PORT ? process.env.PORT : 3001
+const port = process.env.PORT ? process.env.PORT : 3000
 
 // Require MiddleWares
 const morgan = require('morgan')
@@ -36,7 +36,7 @@ const orderRouter = require('./Routers/Order_Routs')
 // const profileRouts = require('./Routers/Profile_Routs')
 
 // use Routers
-app.use('/product', productRouter)
+app.use('/products', productRouter)
 app.use('/order', orderRouter)
 // app.use('/auth', AuthRouter)
 // app.use('/review', reviewRouter)
