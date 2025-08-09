@@ -23,11 +23,6 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Require Routers
-const AuthRouter = require('./Routers/AuthRouter')
-// use Routers
-app.use('/auth', AuthRouter)
-
 // Root Route
 app.get('/', (req, res) => {
   res.send('Your app is connected . . . ')
@@ -36,10 +31,16 @@ app.get('/', (req, res) => {
 // Require Routers
 const productRouter = require('./Routers/Product_Routs')
 const orderRouter = require('./Routers/Order_Routs')
+// const AuthRouter = require('./Routers/AuthRouter')
+const reviewRouter = require('./Routers/Review_Routs')
+const profileRouts = require('./Routers/Profile_Routs')
 
 // use Routers
 app.use('/product', productRouter)
 app.use('/order', orderRouter)
+// app.use('/auth', AuthRouter)
+app.use('/review', reviewRouter)
+app.use('/profile', profileRouts)
 
 // Listener
 app.listen(port, () => {
