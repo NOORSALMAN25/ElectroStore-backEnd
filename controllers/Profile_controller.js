@@ -12,9 +12,14 @@ const profile_show_get = async (req, res) => {
 }
 // it dosnt shows the informationn of the user at the database it just print information
 
-// const profile_update_put = async (req, res) => {
-
-// }
+const profile_update_put = async (req, res) => {
+  // try{
+  //   const {id} = req.params
+  //   {$set:{name , email } }req.body
+  // }
+  // const updated = await User.findByIdAndUpdate(
+  // )
+}
 
 module.exports = {
   profile_show_get,
