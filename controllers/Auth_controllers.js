@@ -3,8 +3,11 @@ const middleware = require('../middleware')
 
 const Register = async (req, res) => {
   try {
-    const { email, password, name } = req.body
+    const { email, password, confirmPassword, name } = req.body
     console.log(req.body)
+    if (password !== confirmPassword) {
+      return res.status(400).send('Passwords do not match!')
+    }
     let passwordDigest = await middleware.hashPassword(password)
     let existingUser = await User.exists({ email })
     if (existingUser) {
