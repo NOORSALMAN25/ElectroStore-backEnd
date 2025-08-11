@@ -21,16 +21,17 @@ const GettingAllProducts = async (req, res) => {
 const GettingOneProduct = async (req, res) => {
   try {
     const oneProduct = await Product.findById(req.params.productId)
+    console.log(oneProduct ? oneProduct : 'Product not found')
     res.status(200).send(oneProduct)
   } catch (error) {
-    throw error
+    console.log('Product not found in catch')
   }
 } // tested
 
 const UpdateProduct = async (req, res) => {
   try {
     const updateProduct = await Product.findByIdAndUpdate(
-      req.params.id,
+      req.params.productId,
       req.body,
       { new: true }
     )
@@ -42,7 +43,7 @@ const UpdateProduct = async (req, res) => {
 
 const DeletingProduct = async (req, res) => {
   try {
-    const deleteProduct = await Product.findByIdAndDelete(req.params.id)
+    const deleteProduct = await Product.findByIdAndDelete(req.params.productId)
     res.send(200).send({ message: 'Product deleted' })
   } catch (error) {
     res.status(500).send({ error: error.message })
