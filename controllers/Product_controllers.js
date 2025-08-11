@@ -30,7 +30,7 @@ const GettingOneProduct = async (req, res) => {
 const UpdateProduct = async (req, res) => {
   try {
     const updateProduct = await Product.findByIdAndUpdate(
-      req.params.id,
+      req.params.productId,
       req.body,
       { new: true }
     )
@@ -42,7 +42,7 @@ const UpdateProduct = async (req, res) => {
 
 const DeletingProduct = async (req, res) => {
   try {
-    const deleteProduct = await Product.findByIdAndDelete(req.params.id)
+    const deleteProduct = await Product.findByIdAndDelete(req.params.productId)
     res.send(200).send({ message: 'Product deleted' })
   } catch (error) {
     res.status(500).send({ error: error.message })

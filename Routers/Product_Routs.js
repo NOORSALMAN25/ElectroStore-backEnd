@@ -4,9 +4,9 @@ const reviewCtrl = require('../controllers/Review_controllers')
 
 router.post('/', productCtrl.AddingProduct)
 router.get('', productCtrl.GettingAllProducts)
-router.get('/:id', productCtrl.GettingOneProduct)
-router.put('/:id', productCtrl.UpdateProduct)
-router.delete('/:id', productCtrl.DeletingProduct)
+router.get('/:productId', productCtrl.GettingOneProduct)
+router.put('/:productId', productCtrl.UpdateProduct)
+router.delete('/:productId', productCtrl.DeletingProduct)
 
 //reviews routes
 router.get('/:productId/reviews', reviewCtrl.reviews_getAll)
