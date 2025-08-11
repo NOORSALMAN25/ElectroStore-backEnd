@@ -4,8 +4,11 @@ const Product = require('../models/Product')
 
 exports.reviews_getAll = async (req, res) => {
   try {
-    const { productId } = req.params
-    const reviews = await Review.find({ productId: productId })
+
+    const productId = req.params.productId
+    const reviews = await Review.find({ product: productId })
+    console.log(reviews)
+
     res.status(200).json(reviews)
   } catch (error) {
     res.status(500).json({ error: error.message })
@@ -14,6 +17,8 @@ exports.reviews_getAll = async (req, res) => {
 
 exports.reviews_create_post = async (req, res) => {
   try {
+
+    console.log('reviews_create_post')
     const productId = parseInt(req.params.productId, 10)
     if (isNaN(productId)) {
       return res.status(400).json({ error: 'Invalid product ID' })
@@ -27,8 +32,18 @@ exports.reviews_create_post = async (req, res) => {
     if (isNaN(ratingNum) || ratingNum < 0 || ratingNum > 5) {
       return res.status(400).json({ error: 'Invalid rating value' })
     }
-    const reviewData = { comment, rating: ratingNum, productId }
+
+    const reviewData = {
+      comment,
+      rating: ratingNum,
+      product: req.params.productId,
+      user: req.body.user
+    }
+
     const review = await Review.create(reviewData)
+    console.log('new review:')
+    console.log(review)
+    
     res.status(201).json(review)
   } catch (error) {
     console.error('Error creating review:', error)
