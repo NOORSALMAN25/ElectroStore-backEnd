@@ -36,7 +36,7 @@ const AuthRouter = require('./Routers/AuthRouter')
 
 // use Routers
 app.use('/products', productRouter)
-app.use('/order', orderRouter)
+app.use('/orders', orderRouter)
 app.use('/auth', AuthRouter)
 // app.use('/profile', profileRouts)
 
