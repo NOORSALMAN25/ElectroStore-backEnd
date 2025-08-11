@@ -34,3 +34,35 @@ exports.userprofile_update = async (req, res) => {
     throw error
   }
 }
+
+exports.userUpdatePasswprd = async (req, res) => {
+  try {
+    const { oldPassword, NewPassword } = req.body
+    let user = await User.findById(req.params.id)
+    let matched = await middleware.comparePassword(
+      oldPassword,
+      user.passwordDigest
+    )
+    if (matched) {
+      let passwordDigest = await middleware.hashPassword(NewPassword)
+      user = await User.findByIdAndUpdate(req.params.id, { passwordDigest })
+
+      let payload = {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
+
+      return res
+        .status(200)
+        .send({ status: 'Password Updates ', user: payload })
+    }
+    res.status(401).send({ status: 'error', msg: 'Old password did not match' })
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({
+      status: 'error',
+      msg: 'An error occurred updating password'
+    })
+  }
+}
