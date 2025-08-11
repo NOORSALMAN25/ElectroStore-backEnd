@@ -23,7 +23,7 @@ const createToken = (payload) => {
 
 const stripToken = (req, res, next) => {
   try {
-    const token = req.headers['authorization'].split('')[1]
+    const token = req.headers['authorization'].split(' ')[1]
 
     if (token) {
       res.locals.token = token
@@ -38,6 +38,7 @@ const stripToken = (req, res, next) => {
 
 const verifyToken = (req, res, next) => {
   const { token } = res.locals
+
   try {
     let payload = jwt.verify(token, APP_SECRET)
     if (payload) {
