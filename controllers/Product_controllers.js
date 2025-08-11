@@ -5,7 +5,7 @@ const AddingProduct = async (req, res) => {
     const product = await Product.create(req.body)
     res.status(200).send(product)
   } catch (error) {
-    throw error
+    res.status(500).send({ error: error.message })
   }
 } // tested
 
@@ -43,9 +43,9 @@ const UpdateProduct = async (req, res) => {
 const DeletingProduct = async (req, res) => {
   try {
     const deleteProduct = await Product.findByIdAndDelete(req.params.id)
-    res.send(200)
+    res.send(200).send({ message: 'Product deleted' })
   } catch (error) {
-    throw error
+    res.status(500).send({ error: error.message })
   }
 } // tested
 
