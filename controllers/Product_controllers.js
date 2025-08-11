@@ -21,10 +21,9 @@ const GettingAllProducts = async (req, res) => {
 const GettingOneProduct = async (req, res) => {
   try {
     const oneProduct = await Product.findById(req.params.productId)
-    console.log(oneProduct ? oneProduct : 'Product not found')
     res.status(200).send(oneProduct)
   } catch (error) {
-    console.log('Product not found in catch')
+    throw error
   }
 } // tested
 

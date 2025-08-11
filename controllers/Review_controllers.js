@@ -4,11 +4,8 @@ const Product = require('../models/Product')
 
 exports.reviews_getAll = async (req, res) => {
   try {
-
     const productId = req.params.productId
     const reviews = await Review.find({ product: productId })
-    console.log(reviews)
-
     res.status(200).json(reviews)
   } catch (error) {
     res.status(500).json({ error: error.message })
@@ -17,8 +14,6 @@ exports.reviews_getAll = async (req, res) => {
 
 exports.reviews_create_post = async (req, res) => {
   try {
-
-    console.log('reviews_create_post')
     const productId = parseInt(req.params.productId, 10)
     if (isNaN(productId)) {
       return res.status(400).json({ error: 'Invalid product ID' })
@@ -41,9 +36,6 @@ exports.reviews_create_post = async (req, res) => {
     }
 
     const review = await Review.create(reviewData)
-    console.log('new review:')
-    console.log(review)
-    
     res.status(201).json(review)
   } catch (error) {
     console.error('Error creating review:', error)
@@ -56,9 +48,6 @@ exports.reviews_delete_delete = async (req, res) => {
     const { reviewId } = req.params
     const deleted = await Review.findByIdAndDelete(reviewId)
     if (!deleted) return res.status(404).json({ error: 'Review not found' })
-    //   if (review.user.toString() !== req.user.id) {
-    //   return res.status(403).json({ error: 'Not authorized to delete this review' });
-    // }
     res.status(200).json({ msg: 'Review Deleted' })
   } catch (error) {
     res.status(500).json({ error: error.message })
