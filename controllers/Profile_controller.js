@@ -35,7 +35,7 @@ exports.userprofile_update = async (req, res) => {
   }
 }
 
-exports.userUpdatePasswprd = async (req, res) => {
+exports.userUpdatePassword = async (req, res) => {
   try {
     const { oldPassword, NewPassword } = req.body
     let user = await User.findById(req.params.id)
