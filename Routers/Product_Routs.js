@@ -11,12 +11,7 @@ router.post(
 )
 router.get('', productCtrl.GettingAllProducts)
 router.get('/:productId', productCtrl.GettingOneProduct)
-router.put(
-  '/:productId',
-  middleware.stripToken,
-  middleware.verifyToken,
-  productCtrl.UpdateProduct
-)
+router.put('/:productId', productCtrl.UpdateProduct)
 router.delete(
   '/:productId',
   middleware.stripToken,
