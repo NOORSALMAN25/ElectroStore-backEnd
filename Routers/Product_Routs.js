@@ -12,12 +12,7 @@ router.post(
 router.get('', productCtrl.GettingAllProducts)
 router.get('/:productId', productCtrl.GettingOneProduct)
 router.put('/:productId', productCtrl.UpdateProduct)
-router.delete(
-  '/:productId',
-  middleware.stripToken,
-  middleware.verifyToken,
-  productCtrl.DeletingProduct
-)
+router.delete('/:productId', productCtrl.DeletingProduct)
 
 //reviews routes
 router.get('/:productId/reviews', reviewCtrl.reviews_getAll)
