@@ -65,4 +65,21 @@ const removeFromCart = async (req, res) => {
   }
 } // tested
 
-module.exports = { getCart, addToCart, removeFromCart }
+const clearCart = async (req, res) => {
+  try {
+    const cart = await Order.findOneAndDelete({
+      user: req.params.userId,
+      status: 'ongoing'
+    })
+
+    if (!cart) {
+      return res.status(404).send({ error: 'Cart not found' })
+    }
+
+    res.status(200).send({ message: 'Cart deleted successfully' })
+  } catch (err) {
+    res.status(500).send({ error: err.message })
+  }
+}
+
+module.exports = { getCart, addToCart, removeFromCart, clearCart }
