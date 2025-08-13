@@ -4,7 +4,7 @@ const middleware = require('../middleware')
 const Register = async (req, res) => {
   try {
     const { email, password, confirmPassword, name } = req.body
-    console.log(req.body)
+
     if (password !== confirmPassword) {
       return res.status(400).send('Passwords do not match!')
     }
@@ -44,7 +44,7 @@ const Login = async (req, res) => {
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {
-    console.log(error)
+    throw error
     res
       .status(401)
       .send({ status: 'Error', msg: 'An error has occurred logging in!' })
@@ -76,7 +76,7 @@ const UpdatePassword = async (req, res) => {
       .status(401)
       .send({ status: 'Error', msg: 'Old Password did not match!' })
   } catch (error) {
-    console.log(error)
+    throw error
     res.status(401).send({
       status: 'Error',
       msg: 'An error has occurred updating password!'
