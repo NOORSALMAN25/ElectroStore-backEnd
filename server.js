@@ -16,6 +16,31 @@ const port = process.env.PORT ? process.env.PORT : 3010
 const morgan = require('morgan')
 const cors = require('cors')
 
+// -------------------------------------------
+
+// CORS configuration
+const allowedOrigins = [
+  process.env.FRONTEND_URL_LOCAL,
+  process.env.FRONTEND_URL_PROD
+]
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like Postman or server-to-server)
+    if (!origin) return callback(null, true)
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `CORS policy: The origin ${origin} is not allowed.`
+      return callback(new Error(msg), false)
+    }
+    return callback(null, true)
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}
+
+// -------------------------------------------
+
 // use MiddleWares
 app.use(morgan('dev'))
 app.use(cors())
