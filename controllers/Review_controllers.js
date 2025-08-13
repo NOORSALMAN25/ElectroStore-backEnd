@@ -46,8 +46,17 @@ exports.reviews_create_post = async (req, res) => {
 exports.reviews_delete_delete = async (req, res) => {
   try {
     const { reviewId } = req.params
-    const deleted = await Review.findByIdAndDelete(reviewId)
-    if (!deleted) return res.status(404).json({ error: 'Review not found' })
+    const review = await Review.findById(reviewId)
+    if (!review) {
+      return res.status(404).json({ error: 'Review not found' })
+    }
+    if (review.user.toString() !== res.locals.payload.id) {
+      return res
+        .status(403)
+        .json({ error: 'Not authorized to delete this review' })
+    }
+
+    await review.deleteOne()
     res.status(200).json({ msg: 'Review Deleted' })
   } catch (error) {
     res.status(500).json({ error: error.message })
