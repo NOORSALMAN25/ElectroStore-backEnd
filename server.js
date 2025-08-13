@@ -34,16 +34,20 @@ const corsOptions = {
     }
     return callback(null, true)
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }
+// Apply CORS middleware globally
+app.use(cors(corsOptions))
+// Handle preflight requests
+app.options('*', cors(corsOptions))
 
 // -------------------------------------------
 
 // use MiddleWares
 app.use(morgan('dev'))
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
