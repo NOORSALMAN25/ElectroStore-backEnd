@@ -43,7 +43,7 @@ const corsOptions = {
 
 // use MiddleWares
 app.use(morgan('dev'))
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
