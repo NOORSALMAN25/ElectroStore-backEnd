@@ -34,10 +34,14 @@ const corsOptions = {
     }
     return callback(null, true)
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }
+// Apply CORS middleware globally
+app.use(cors(corsOptions))
+// Handle preflight requests
+app.options('*', cors(corsOptions))
 
 // -------------------------------------------
 
