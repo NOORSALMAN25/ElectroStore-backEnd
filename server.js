@@ -10,17 +10,32 @@ const app = express()
 const mongoose = require('./config/db')
 
 // set Port Configuration
-const port = process.env.PORT ? process.env.PORT : 3001
+const port = process.env.PORT ? process.env.PORT : 3010
 
 // Require MiddleWares
 const morgan = require('morgan')
 const cors = require('cors')
 
+const allowedOrigins = [
+  'http://localhost:5173', // local dev
+  'https://electro-store.surge.sh' // production frontend
+]
+
 // use MiddleWares
 app.use(morgan('dev'))
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://electro-store.surge.sh/']
+    origin: function (origin, callback) {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true)
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          'The CORS policy for this site does not allow access from the specified Origin.'
+        return callback(new Error(msg), false)
+      }
+      return callback(null, true)
+    },
+    credentials: true // if you want cookies or auth headers
   })
 )
 app.use(express.urlencoded({ extended: true }))
