@@ -28,7 +28,15 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   cors({
-    origin: '*', // or list of allowed origins
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true) // allow mobile apps, curl, etc.
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          'The CORS policy for this site does not allow access from the specified Origin.'
+        return callback(new Error(msg), false)
+      }
+      return callback(null, true)
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
