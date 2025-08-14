@@ -23,6 +23,9 @@ const allowedOrigins = [
 
 // use MiddleWares
 app.use(morgan('dev'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -38,9 +41,8 @@ app.use(
     credentials: true // if you want cookies or auth headers
   })
 )
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')))
+// Enable preflight for all routes
+app.options('*', cors({ origin: allowedOrigins, credentials: true }))
 
 // Root Route
 app.get('/', (req, res) => {
