@@ -16,14 +16,14 @@ const port = process.env.PORT ? process.env.PORT : 3010
 const morgan = require('morgan')
 const cors = require('cors')
 
-const allowedOrigins = [
-  'http://localhost:5173', // local dev
-  'https://electro-store.surge.sh' // production frontend
-]
-
 // use MiddleWares
 app.use(morgan('dev'))
-app.use(cors())
+app.use(
+  cors({
+    origin: 'https://electro-store.surge.sh',
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  })
+)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
