@@ -17,7 +17,6 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 // use MiddleWares
-app.use(morgan('dev'))
 app.use(
   cors({
     origin: 'https://electro-store.surge.sh',
@@ -29,6 +28,7 @@ app.use(
 // Explicitly handle preflight requests
 app.options('*', cors())
 
+app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
