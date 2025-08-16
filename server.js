@@ -17,13 +17,13 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 // use MiddleWares
-app.use(cors())
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', '*')
   res.header('Access-Control-Allow-Methods', '*')
   next()
 })
+app.use(cors())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
