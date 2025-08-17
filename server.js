@@ -23,10 +23,10 @@ const cors = require('cors')
 //   res.header('Access-Control-Allow-Methods', '*')
 //   next()
 // })
+app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Root Route
