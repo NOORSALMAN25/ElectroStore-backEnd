@@ -1,6 +1,6 @@
 const Review = require('../models/Review')
 const user = require('../models/User')
-const Product = require('../models/Product')
+const Product = require('../models/products')
 
 exports.reviews_getAll = async (req, res) => {
   try {
