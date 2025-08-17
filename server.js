@@ -7,6 +7,8 @@ const path = require('path')
 // Initialize app
 const app = express()
 
+app.use(cors('*'))
+
 // Database Configuration
 const mongoose = require('./config/db')
 
@@ -18,7 +20,6 @@ const morgan = require('morgan')
 
 // use MiddleWares
 app.use(express.json())
-app.use(cors())
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*')
 //   res.header('Access-Control-Allow-Headers', '*')
